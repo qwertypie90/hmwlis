@@ -1,0 +1,27 @@
+{
+  "name": "wishlist",
+  "version": "1.0.0",
+  "description": "an online cart for all your internet wishes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwertypie90/wishlist.git"
+  },
+  "author": "Lindsey McDowell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qwertypie90/wishlist/issues"
+  },
+  "homepage": "https://github.com/qwertypie90/wishlist#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemon": "^1.12.5",
+    "path": "^0.12.7",
+    "sweetalert2": "^7.0.9"
+  }
+}
