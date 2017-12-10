@@ -1,14 +1,13 @@
  // MAIL STUFF
-
-
- // On Click for mail
-
+ var to;
+ var subject = "someone just sent you their w!shl!st"
+ // On Click Function For Mail
  $("#email").click(function() {
      event.preventDefault()
-     console.log("clicked")
-
+     var x = wishes.toString()
+     var wishArr = x.split(",").join("\n")
      swal({
-         title: 'Submit email to run ajax request',
+         title: '- Email all of your W!$HES -',
          input: 'email',
          showCancelButton: true,
          confirmButtonText: 'Submit',
@@ -27,53 +26,24 @@
          },
          allowOutsideClick: false
      }).then((result) => {
+         to = $(".swal2-input").val();
+         subject = "Order";
+         data = { to, subject, text: `w!sHes: \n ${wishArr}` }
+         console.log(data)
+         $.ajax({
+             type: "POST",
+             url: 'http://localhost:8080/send',
+             data: data,
+             success: function(data) {
+                 console.log('mail response:', data);
+             }
+         })
          if (result.value) {
              swal({
                  type: 'success',
-                 title: 'Ajax request finished!',
+                 title: 'Email Sent',
                  html: 'Submitted email: ' + result.value
              })
          }
      })
-
  })
-
- //  $('document').ready(function() {
- //   $('#btnTest').click(function() {
- //     $('#dummyModal').modal('show');
- //   });
- // });
-
-
-
- // var from, to, subject, text, store_location, order, name, dropOff;
- // $("#send_email").click(function() {
- //     event.preventDefault()
- //     store_location = $("#store_location").val();
- //     order = $("#order").val();
- //     name = $("#name").val();
- //     dropOff = $("#dropOff").val();
- //     to = "errandsbiz24@gmail.com";
- //     subject = "Order";
- //     $("#main").text("Sending E-mail...Please wait");
- //     // data = {to:to,subject:subject,location:location,order:order,name:name,dropOff:dropOff}
- //     data = { to, subject, text: `Store Location: ${store_location}, \n order: ${order}, \n name: ${name}, \n dropOff: ${dropOff}` }
- //     $.ajax({
- //         type: "POST",
- //         url: 'http://localhost:3000/send',
- //         data: data,
- //         success: function(data) {
- //             console.log('mail response:', data);
- //             if (data == "sent") {
- //                 $("#main").empty().html("Email is been sent. " + name + " Your order is on the way!");
- //             }
- //         }
- //     })
- //         $.get("http://localhost:3000/send",{to:to,subject:subject,location:location,order:order,name:name,dropOff:dropOff},function(data){
- //         if(data=="sent")
- //         {
- //             $("#main").empty().html("Email is been sent at "+to+". Your order is on it's way!");
- //         }
- // });
- // });
- // ******

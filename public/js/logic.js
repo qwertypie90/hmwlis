@@ -9,10 +9,14 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var wishes = []
+
+
 $('#save').on("click", function() {
     var result = $(".form-control").val().trim()
-    var URLinput = result.link("https://" + result)
+    var URLinput = result.link(result)
     $('#linx').prepend(URLinput + "<br/>")
+    wishes.push(result)
     $(".form-control").val("");
 })
 
